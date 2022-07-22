@@ -1,0 +1,26 @@
+body{
+    background-color: black;
+}
+.carousel{
+    display: flex;
+    overflow: scroll;
+    border-radius: 10px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #ffc107;
+    border-color: #212529;
+}
+.card{
+    margin-right: 10px;
+    border-color: black;
+    height: 300px;
+    text-align: center;
+}
+h1{
+    color: #ffc107;
+}
+.card img{
+    height: 130px;
+    width: 272px;
+}
