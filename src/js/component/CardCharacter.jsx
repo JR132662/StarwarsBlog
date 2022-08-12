@@ -1,28 +1,21 @@
 import React from "react";
 import {Link} from "react-router-dom"
 import { useEffect } from "react";
+import { PropTypes } from "prop-types";
 
-const SWAPI = () =>{
-    fetch("https://www.swapi.tech/api/planets/")
-.then(res => res.json())
-.then(data => console.log(data.results[0].name, 'datatest'))
-.catch(err => console.error(err))
-}
 
-function Card (props) {
-    useEffect(()=>{
-        SWAPI()
-    
-    },[])
+
+export default function CardCharacter (props) {
+    console.log(props, 'Cprops')
     return (
         <div className="col-3 card cntainer">
-            <div className="Card">
+            <div className="CardCharacter">
                 <img src="https://theforce.net/swtc/Pix/books/dk/globetatooine.jpg" className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h5 className="card-title">{people.name}</h5>
+                    <h5 className="card-title">Dummy text</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
                     <div className="card-end">
-                        <Link to={`/${props.routepath}/${props.data.uid}`}>
+                        <Link to="/character/:theid">
                             <button className="btn btn-primary">Learn more about!</button>
                         </Link>
                         <a href="#" className="btn icon-btn border border-warning"><i className="bi bi-heart-fill"></i></a>
@@ -32,5 +25,7 @@ function Card (props) {
         </div>
     )
 }
-
-export default Card
+CardCharacter.propTypes = {
+    data : PropTypes.object,
+    id : PropTypes.integer
+}
