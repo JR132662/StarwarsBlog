@@ -1,34 +1,32 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom"
-import { useEffect } from "react";
+import { Context } from "../store/appContext";
 
-const SWAPI = () =>{
-    fetch("https://www.swapi.tech/api/planets/")
-.then(res => res.json())
-.then(data => console.log(data.results[0].name, 'datatest'))
-.catch(err => console.error(err))
-}
 
-function Card (props) {
-    useEffect(()=>{
-        SWAPI()
-    
-    },[])
+
+
+function Card (props){
+    const {store, actions,} = useContext(context)
     return (
         <div className="col-3 card cntainer">
+                {store.list.results &&
+            store.list.results.map((list, index) => {
+            return(
             <div className="Card">
                 <img src="https://theforce.net/swtc/Pix/books/dk/globetatooine.jpg" className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h5 className="card-title">{people.name}</h5>
+                    <h5 className="card-title">lol</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
                     <div className="card-end">
-                        <Link to={`/${props.routepath}/${props.data.uid}`}>
+                        <Link to={`${props.routepath}${props.data.uid}`}>
                             <button className="btn btn-primary">Learn more about!</button>
                         </Link>
                         <a href="#" className="btn icon-btn border border-warning"><i className="bi bi-heart-fill"></i></a>
                     </div>
                 </div>
             </div>
+            );
+            })}
         </div>
     )
 }
